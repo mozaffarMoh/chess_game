@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+@import './styles/main.scss';
+
+@theme {
+  --color-surface: #16181d;
+  --color-surface-raised: #1e2128;
+  --color-surface-hover: #262a33;
+  --color-edge: #2f3440;
+  --color-ink: #e8eaee;
+  --color-ink-muted: #9aa1ae;
+  --color-accent: #c9a227;
+  --color-accent-soft: #e0be4a;
+}

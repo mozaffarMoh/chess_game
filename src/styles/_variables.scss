@@ -1,0 +1,19 @@
+// Board palette — a muted walnut/sage scheme that stays readable in dark UI.
+$light-square: #ebe4d3;
+$dark-square: #7c8f6f;
+
+$highlight-select: rgba(255, 214, 92, 0.55);
+$highlight-last: rgba(255, 214, 92, 0.28);
+$highlight-check: rgba(214, 69, 65, 0.75);
+
+$ink: #e8eaee;
+$ink-muted: #9aa1ae;
+$accent: #c9a227;
+$accent-soft: #e0be4a;
+$edge: #2f3440;
+$surface: #16181d;
+$surface-raised: #1e2128;
+$surface-hover: #2b303a;
+
+$board-radius: 6px;
+$ease: cubic-bezier(0.22, 0.61, 0.36, 1);
