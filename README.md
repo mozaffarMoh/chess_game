@@ -66,7 +66,25 @@ motif. The speaker button mutes everything, and the preference persists.
 - Undo, resign, and draw by agreement. Against the computer, undo steps back over
   its reply so it is your turn again.
 - Editable player names, captured-piece tally and material advantage.
+- Anything that would discard a game in progress asks first, in a dialog you can
+  dismiss with Escape or a click outside.
+- Responsive from 320px up: the board stays square, settings rows stack, and the
+  two-column layout kicks in at 768px.
 - The game in progress and the last 20 finished games persist across reloads.
+
+## Icons
+
+The app icon is a knight silhouette drawn as inline SVG in
+[`public/favicon.svg`](public/favicon.svg), using the same palette as the board.
+It is deliberately flat and outline-free — at 16px an outlined piece turns to
+mush, while a high-contrast silhouette still reads in a tab strip.
+
+- `favicon.svg` — rounded tile, the browser tab icon
+- `icon-maskable.svg` — art inside the 80% safe zone so Android launchers can
+  crop to a circle or squircle without clipping the knight
+- `apple-touch-icon.png` (180px) and `icon-512.png` — raster fallbacks, rendered
+  from the maskable SVG
+- `manifest.webmanifest` — installable metadata, themed to the app background
 
 ## Layout
 

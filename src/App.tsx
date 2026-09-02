@@ -67,7 +67,10 @@ export default function App() {
         : 'Switching to two players will end the game in progress.';
     }
     if (pendingSettings.difficulty) {
-      return `Changing the level to ${pendingSettings.difficulty} will end the game in progress.`;
+      const label =
+        pendingSettings.difficulty.charAt(0).toUpperCase() +
+        pendingSettings.difficulty.slice(1);
+      return `Changing the level to ${label} will end the game in progress.`;
     }
     if (pendingSettings.humanColor) {
       return `Playing as ${
@@ -118,9 +121,9 @@ export default function App() {
 
   return (
     <div className="mx-auto flex min-h-full max-w-[1180px] flex-col gap-4 px-3 py-4 sm:gap-6 sm:px-4 sm:py-6 lg:px-8">
-      <header className="flex flex-wrap items-center justify-between gap-4">
+      <header className="flex flex-wrap items-center justify-between gap-3 sm:gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">
+          <h1 className="text-xl font-bold tracking-tight sm:text-2xl">
             Chess<span className="text-accent">.</span>
           </h1>
           <p className="mt-0.5 text-sm text-ink-muted">
@@ -130,7 +133,7 @@ export default function App() {
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-1 flex-wrap items-center justify-end gap-2">
           <SoundToggle />
           <button type="button" className="btn" onClick={() => setFlipped((v) => !v)}>
             Flip board

@@ -203,6 +203,10 @@
     flex: 1 1 0;
     min-width: 0;
     padding: 6px 8px;
+
+    @media (max-width: 640px) {
+      padding: 9px 8px;
+    }
     border: 0;
     border-radius: 6px;
     background: transparent;
@@ -255,6 +259,12 @@
   grid-template-columns: 4.6rem minmax(0, 1fr);
   align-items: center;
   gap: 10px;
+
+  // Below this the label column squeezes the buttons too hard; stack instead.
+  @media (max-width: 380px) {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
 }
 
 // "Computer is thinking" indicator.
