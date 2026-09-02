@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import type { HistoryEntry } from '../types/chess';
+import { useEffect, useRef } from "react";
+import type { HistoryEntry } from "../types/chess";
 
 interface MoveListProps {
   history: HistoryEntry[];
@@ -8,12 +8,15 @@ interface MoveListProps {
 }
 
 export default function MoveList({ history, reviewIndex, onGoTo }: MoveListProps) {
-  const endRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
   const activeIndex = reviewIndex ?? history.length - 1;
 
-  // Keep the newest move in view while playing live.
+  // Keep the newest move in view while playing live. Scroll the list itself
+  // rather than scrollIntoView, which also scrolls the page on mobile.
   useEffect(() => {
-    if (reviewIndex === null) endRef.current?.scrollIntoView({ block: 'end' });
+    if (reviewIndex !== null) return;
+    const list = listRef.current;
+    if (list) list.scrollTop = list.scrollHeight;
   }, [history.length, reviewIndex]);
 
   const rows = Array.from({ length: Math.ceil(history.length / 2) }, (_, i) => i);
@@ -27,7 +30,7 @@ export default function MoveList({ history, reviewIndex, onGoTo }: MoveListProps
   }
 
   return (
-    <div className="move-list flex-1">
+    <div ref={listRef} className="move-list flex-1">
       {rows.map((row) => {
         const whiteIdx = row * 2;
         const blackIdx = whiteIdx + 1;
@@ -40,9 +43,7 @@ export default function MoveList({ history, reviewIndex, onGoTo }: MoveListProps
 
             <button
               type="button"
-              className={`move-list__move ${
-                activeIndex === whiteIdx ? 'move-list__move--active' : ''
-              }`}
+              className={`move-list__move ${activeIndex === whiteIdx ? "move-list__move--active" : ""}`}
               onClick={() => onGoTo(whiteIdx)}
             >
               {white.san}
@@ -51,9 +52,7 @@ export default function MoveList({ history, reviewIndex, onGoTo }: MoveListProps
             {black ? (
               <button
                 type="button"
-                className={`move-list__move ${
-                  activeIndex === blackIdx ? 'move-list__move--active' : ''
-                }`}
+                className={`move-list__move ${activeIndex === blackIdx ? "move-list__move--active" : ""}`}
                 onClick={() => onGoTo(blackIdx)}
               >
                 {black.san}
@@ -64,7 +63,6 @@ export default function MoveList({ history, reviewIndex, onGoTo }: MoveListProps
           </div>
         );
       })}
-      <div ref={endRef} />
     </div>
   );
 }
